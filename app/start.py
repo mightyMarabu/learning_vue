@@ -1,10 +1,11 @@
-
-import sqlite3
-
 from flask import Flask, render_template, request, Response, jsonify
 import markdown.extensions.fenced_code
 
+from flask_cors import CORS
+
 from db_conn import *
+
+import sqlite3
 
 import json
 
@@ -20,8 +21,8 @@ def index():
 def DBsync():
     executeDBsync()
     return jsonify("DB syncronised")
-##### sqlite
-# sqlite-db
+
+###### sqlite-db #######
 @app.route("/getData/")
 def getData():
     connect = sqlite3.connect('learning_vue/app/db.sqlite')
@@ -34,7 +35,8 @@ def getData():
     connect.close()
     return Response(json.dumps(result), mimetype="application/json")
    
-
+# enable CORS
+CORS(app, resources={r'/*': {'origins': '*'}})
 
 #####################################################################
 if __name__ == "__main__":
