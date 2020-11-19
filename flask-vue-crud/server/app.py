@@ -2,8 +2,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 
 
-# configuration
-DEBUG = True
+
 
 # instantiate the app
 app = Flask(__name__)
@@ -20,4 +19,6 @@ def ping_pong():
 
 
 if __name__ == '__main__':
+    # configuration
+    DEBUG = True
     app.run()
