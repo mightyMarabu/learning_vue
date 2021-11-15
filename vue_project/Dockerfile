@@ -5,6 +5,7 @@ WORKDIR /app
 
 COPY ["package.json", "package-lock.json*", "./"]
 
+RUN npm install -g @vue/cli
 RUN npm install --production
 RUN npm audit fix
 
